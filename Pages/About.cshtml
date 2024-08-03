@@ -1,0 +1,35 @@
+﻿@page
+@model             AboutModel
+
+@{
+    ViewData["Title"] = "About O Movies";
+}
+
+<div class="container my-5">
+    <h1 class="text-center mb-5">@ViewData["Title"]</h1>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <img src="~/images/movie-machine.png" alt="movie machine" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-3">History</h2>
+            <hr>
+            <p class="lead">Founded in the heart of the city in 1940, O Movies was born out of a passion for the golden age of cinema. During a time when the world was in turmoil, the founders of O Movies sought to create a sanctuary where audiences could escape into the timeless stories and masterful artistry of classic films.</p>
+            <p>From its inception, the theater has dedicated itself to preserving and celebrating the rich history of cinema, showcasing the works of legendary filmmakers from Hollywood's most iconic eras.</p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6 order-md-2">
+            <img src="~/images/theater.png" alt="theater" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h2 class="mb-3">Philosophy</h2>
+            <hr>
+            <p class="lead">O Movies operates with a simple yet profound philosophy: to bring the masterpieces of the past to the present audience.</p>
+            <p>The theater believes in the enduring power of classic films to inspire, entertain, and provoke thought. In an era dominated by the latest blockbusters and cutting-edge technology, O Movies stands as a testament to the enduring allure of the classics.</p>
+            <p>At O Movies, each screening is a journey back in time, offering a glimpse into the artistry and storytelling that defined the early years of cinema. The theater prides itself on its curated selection of films, ensuring that every visit is a unique and enriching experience.</p>
+        </div>
+    </div>
+</div>

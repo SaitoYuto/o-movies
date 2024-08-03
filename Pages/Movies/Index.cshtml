@@ -1,0 +1,87 @@
+@page "{searchString?}"
+@using Microsoft.AspNetCore.Identity
+@model             IndexModel
+
+@{
+    ViewData["Title"] = "Movie Catalog";
+}
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div class="container my-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <div class="card mb-4">
+        <div class="card-body text-dark">
+            <form method="get" class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label asp-for="MovieGenre" class="form-label">Genre</label>
+                    <select asp-for="MovieGenre" asp-items="Model.Genres" class="form-select">
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="SearchString" class="form-label">Search</label>
+                    <input type="text" asp-for="SearchString" class="form-control" placeholder="Enter keyword"/>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-page="Create" class="btn btn-success"><i class="bi bi-plus-lg me-2"></i>Add New Movie</a>
+        <p class="mb-0">Page @Model.Movie.PageIndex of @Model.Movie.TotalPages</p>
+    </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.Movie)
+        {
+            <div class="col text-dark">
+                <div class="card h-100 shadow-sm">
+                    <img src="@item.PosterImageUrl" alt="@item.Title Poster" class="card-img-top poster-img" />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Genre</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="bi bi-info-circle me-2"></i>Details</a>
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                            <div>
+                                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+                                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(!Model.Movie.HasPreviousPage ? "disabled" : "")">
+                <a class="page-link" asp-page="./Index"
+                   asp-route-pageNumber="@(Model.Movie.PageIndex - 1)"
+                   asp-route-sortOrder="@Model.SortOrder"
+                   asp-route-searchString="@Model.SearchString"
+                   asp-route-movieGenre="@Model.MovieGenre">Previous</a>
+            </li>
+            <li class="page-item @(!Model.Movie.HasNextPage ? "disabled" : "")">
+                <a class="page-link" asp-page="./Index"
+                   asp-route-pageNumber="@(Model.Movie.PageIndex + 1)"
+                   asp-route-sortOrder="@Model.SortOrder"
+                   asp-route-searchString="@Model.SearchString"
+                   asp-route-movieGenre="@Model.MovieGenre">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

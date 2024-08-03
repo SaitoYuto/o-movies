@@ -1,0 +1,91 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Noto Serif JP', sans-serif;
+  margin-bottom: 60px;
+}
+
+.top-section {
+  height: 90vh;
+  overflow: hidden;
+}
+
+.top-image {
+  object-fit: cover;
+  height: 100%;
+  transform: scale(1.1);
+  animation: floatImage 2s ease-out forwards;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.top-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: floatText 2s 2s ease-out forwards;
+}
+
+@keyframes floatImage {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-section {
+  height: 60vh;
+}
+
+.about-image {
+  object-fit: cover;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.about-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+.about-section:hover .about-image {
+  transform: scale(1.05);
+}
+.about-section:hover .about-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.poster-img {
+  height: 550px;
+  object-fit: cover;
+}

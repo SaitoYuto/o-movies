@@ -1,0 +1,30 @@
+﻿@page
+@namespace OMovies.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "O Movies";
+}
+
+<div class="container-fluid p-0">
+    <div class="position-relative top-section mb-2">
+        <img src="~/images/home.jpg" alt="Home Image" class="w-100 top-image" />
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center hero-overlay">
+            <div class="text-center text-white top-text">
+                <h1 class="display-1 fw-bold mb-0">O Movies</h1>
+                <p class="lead fs-2">Established 1940</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <a class="text-decoration-none" asp-area="" asp-page="/About">
+            <div class="position-relative about-section overflow-hidden rounded shadow">
+                <img src="~/images/aboutus.jpg" alt="About Us Image" class="w-100 about-image" />
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center p-4 about-overlay">
+                    <h2 class="display-4 mb-3 text-white">About Us</h2>
+                    <p class="lead text-white">We are a unique theater dedicated to screening only classic films, providing a nostalgic escape into the golden age of cinema.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
